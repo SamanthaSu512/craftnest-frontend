@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="../jscode.js"> </script>
+	<link rel="stylesheet" type="text/css" href="../styles/main.css">
+	<title> CraftNest Contact </title>
+</head>
+<body>
+	<header>
+		<nav class="topnav">
+		  <img src="../images/homepage/logo.jpg" alt="Logo of the company">
+		  <a href="../index.html">Home</a>
+		  <a href="../tutorials/tutorials.html">Tutorials</a>
+		  <a href="../market/market.html">Market</a>
+		  <a href="../materials/materials.html">Materials</a>
+		  <a class="active" href="contact.html">Contact</a>
+		</nav>
+	</header>
+	<main>
+		<section class="headline">
+			<h1>Contact</h1>
+		</section>
+
+		<section class="contact-container">
+			<div class= "left-column">
+				<h2>Title</h2>
+				<p>Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.</p>
+			</div>	
+
+			<div class="right-column">
+				<div class="top-text">
+					<p>Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis.</p>
+				</div>
+				<nav class="social-links">
+					<a href="https://www.linkedin.com/" class="card-button">LinkedIn</a>
+					<a href="https://www.x.com/" class="card-button">X</a>
+					<a href="https://www.instagram.com/" class="card-button">Instagram</a>
+					<a href="https://www.facebook.com/" class="card-button">Facebook</a>
+				</nav>
+
+				<address class="email">Lorem ipsum dolor sit amet</address>
+				
+				<form class="form">
+			    <input type="text" placeholder="Your Name">
+			    <input type="email" placeholder="Your Email">
+			    <textarea placeholder="Your Message"></textarea>
+			    <button type="submit">Send</button>
+			  </form>
+			</div>
+		</section>
+		<div class="font-controls">
+			<button onclick="adjustFontSize(0.1)"> Increase Font Size </button>
+			<button onclick="adjustFontSize(-0.1)"> Decrease Font Size </button>
+		</div>
+		<label for="fontType">Font Style:</label>
+		<select id="fontType" onchange="setFontType(this.value)">
+		  <option value="serif">Serif</option>
+		  <option value="sans-serif">Sans Serif</option>
+		  <option value="monospace">Monospace</option>
+		  <option value="Arial, sans-serif">Arial</option>
+		  <option value="'Times New Roman', serif">Times New Roman</option>
+		</select>
+	</main>
+</body>
+</html>
