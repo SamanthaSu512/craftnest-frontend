@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="../jscode.js"> </script>
+	<link rel="stylesheet" type="text/css" href="../styles/main.css">
+	<title> CraftNest Materials </title>
+</head>
+<body>
+	<header>
+		<nav class="topnav">
+		  <img src="../images/homepage/logo.jpg" alt="Logo of the company">
+		  <a href="../index.html">Home</a>
+		  <a href="../tutorials/tutorials.html">Tutorials</a>
+		  <a href="../market/market.html">Market</a>
+		  <a class="active" href="materials.html">Materials</a>
+		  <a href="../contact/contact.html">Contact</a>
+		</nav>
+	</header>
+	<main>
+		<section class="headline">
+			<h1>Materials</h1>
+		</section>
+
+		<div class="card-container">
+			<article class="card" style = "background-image: url('../images/materials/materialimage1.jpg');">
+				<figure>
+				<span role="img" aria-label="material1"> </span>
+				<figcaption class="text-block">
+					<h2>Lorem ipsum</h2>
+					<p>Lorem ipsum dolor sit amet consectetur adipiscing elit quisque faucibus.</p>
+					<a href="https://www.amazon.com/" class="card-button">Buy</a>
+				</figcaption>
+				</figure>
+			</article>
+
+
+			<article class="card" style = "background-image: url('../images/materials/materialimage2.jpg');">
+				<figure>
+				<span role="img" aria-label="material2"> </span>
+				<figcaption class="text-block">
+					<h2>Lorem ipsum</h2>
+					<p>Lorem ipsum dolor sit amet consectetur adipiscing elit quisque faucibus.</p>
+					<a href="https://www.amazon.com/" class="card-button">Buy</a>
+				</figcaption>
+				</figure>
+			</article>
+
+			<article class="card" style = "background-image: url('../images/materials/materialimage3.jpg');">
+				<figure>
+				<span role="img" aria-label="material3"> </span>
+				<figcaption class="text-block">
+					<h2>Lorem ipsum</h2>
+					<p>Lorem ipsum dolor sit amet consectetur adipiscing elit quisque faucibus.</p>
+					<a href="https://www.amazon.com/" class="card-button">Buy</a>
+				</figcaption>
+				</figure>
+			</article>
+
+			<article class="card" style = "background-image: url('../images/materials/materialimage4.jpg');">
+				<figure>
+				<span role="img" aria-label="material4"> </span>
+				<figcaption class="text-block">
+					<h2>Lorem ipsum</h2>
+					<p>Lorem ipsum dolor sit amet consectetur adipiscing elit quisque faucibus.</p>
+					<a href="https://www.amazon.com/" class="card-button">Buy</a>
+				</figcaption>
+				</figure>
+			</article>
+		</div>
+		<div class="font-controls">
+			<button onclick="adjustFontSize(0.1)"> Increase Font Size </button>
+			<button onclick="adjustFontSize(-0.1)"> Decrease Font Size </button>
+		</div>
+		<label for="fontType">Font Style:</label>
+		<select id="fontType" onchange="setFontType(this.value)">
+		  <option value="serif">Serif</option>
+		  <option value="sans-serif">Sans Serif</option>
+		  <option value="monospace">Monospace</option>
+		  <option value="Arial, sans-serif">Arial</option>
+		  <option value="'Times New Roman', serif">Times New Roman</option>
+		</select>
+	</main>
+</body>
+</html>
