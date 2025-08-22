@@ -12,14 +12,12 @@ body {
 .topnav {
   background-color: #382562;
   overflow: hidden;
+  display: flex;
+  align-content: center;
+  vertical-align: middle;
+  flex-wrap: wrap;
 }
 
-.topnav img {
-  width: 75px;
-  height: 75px;
-  float: left;
-  margin-right: 20px;
-}
 
 .topnav a {
   float: left;
@@ -35,10 +33,42 @@ body {
   color: #382562;
 }
 
+.topnav button:hover {
+  background-color: #FEC6DF;
+  color: #382562;
+}
+
+.topnav select:hover {
+  background-color: #FEC6DF;
+  color: #382562;
+}
+
 .topnav a.active {
   background-color: #FFDDE4;
   color: purple;
 }
+
+.topnav button {
+  color: #FEC6DF;
+  background-color: #382562;
+  border: none;
+  padding: 5px 10px;
+  margin: 0;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.topnav select{
+  color:#FEC6DF;
+  background-color: #382562;
+  border:none;
+  border-radius:6px;
+  padding:6px 10px;
+  font-size:1rem;
+  cursor:pointer;
+}
+
 
 /* HEADLINE */
 .headline h1 {
@@ -185,6 +215,7 @@ body {
 label{
   margin:20px;
 }
+
 /* MEDIA QUERIES */
 @media screen and (max-width: 768px) {
   .card {

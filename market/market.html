@@ -16,6 +16,15 @@
 		  <a class="active" href="market.html">Market</a>
 		  <a href="../materials/materials.html">Materials</a>
 		  <a href="../contact/contact.html">Contact</a>
+		  <button onclick="adjustFontSize(0.1)"> A+ </button>
+		  <button onclick="adjustFontSize(-0.1)"> A- </button>
+		  <select id="fontType" onchange="setFontType(this.value)">
+		  <option value="serif">Serif</option>
+		  <option value="sans-serif">Sans Serif</option>
+		  <option value="monospace">Monospace</option>
+		  <option value="Arial, sans-serif">Arial</option>
+		  <option value="'Times New Roman', serif">Times New Roman</option>
+		  </select>
 		</nav>
 	</header>
 
@@ -66,18 +75,6 @@
 				</figure>
 			</article>
 		</div>
-		<div class="font-controls">
-			<button onclick="adjustFontSize(0.1)"> Increase Font Size </button>
-			<button onclick="adjustFontSize(-0.1)"> Decrease Font Size </button>
-		</div>
-		<label for="fontType">Font Style:</label>
-		<select id="fontType" onchange="setFontType(this.value)">
-		  <option value="serif">Serif</option>
-		  <option value="sans-serif">Sans Serif</option>
-		  <option value="monospace">Monospace</option>
-		  <option value="Arial, sans-serif">Arial</option>
-		  <option value="'Times New Roman', serif">Times New Roman</option>
-		</select>
 	</main>
 </body>
 </html>
