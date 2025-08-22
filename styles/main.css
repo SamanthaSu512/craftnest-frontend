@@ -45,7 +45,7 @@ body {
   color: floralwhite;
   text-align: left;
   font-weight: bolder;
-  font-size: 4.6875rem; /* 75px */
+  font-size: 4.6875rem; 
   background-color: #015179;
   padding: 50px;
   margin: 0;
@@ -80,6 +80,7 @@ body {
   padding: 10px;
   border-radius: 8px;
   max-width: 90%;
+  max-height: 50%;
 }
 
 .text-block h2 {
@@ -123,6 +124,10 @@ body {
 
 .left-column h2 {
   margin-bottom: 1rem;
+}
+
+.left-column p {
+  line-height: 1.5;
 }
 
 .right-column {
