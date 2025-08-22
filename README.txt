@@ -1,3 +1,4 @@
+Author: Samantha Su
 Interactive Features:
 1. Font Size Adjuster
 - Buttons allow users to increase or decrease the font size of the entire page content.
