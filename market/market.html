@@ -37,6 +37,35 @@
 			<h1>Market</h1>
 		</section>
 
+		<!-- Listing Form -->
+		<section class="market-form-section">
+			<h2>Post an Item</h2>
+			<form id="listingForm" class="market-form" autocomplete="on">
+				<div class="form-row">
+					<label for="title">Title</label>
+					<input type="text" id="title" name="title" required placeholder="Handmade scarf" />
+				</div>
+				<div class="form-row">
+					<label for="price">Price (USD)</label>
+					<input type="number" id="price" name="price" required step="0.01" min="0" placeholder="25" />
+				</div>
+				<div class="form-row">
+					<label for="description">Description</label>
+					<textarea id="description" name="description" rows="3" required placeholder="Describe your item..."></textarea>
+				</div>
+				<div class="form-row">
+					<label for="contact">Contact Info</label>
+					<input type="text" id="contact" name="contact" required placeholder="email or phone" />
+				</div>
+				<div class="form-row">
+					<label for="imageUrl">Image URL (optional)</label>
+					<input type="url" id="imageUrl" name="imageUrl" placeholder="https://..." />
+				</div>
+				<button type="submit" class="submit-listing">Post Listing</button>
+			</form>
+		</section>
+
+		<!-- Static hero cards -->
 		<div class="card-container">
 			<article class="card" style = "background-image: url('../images/market/marketimage1.jpg');">
 				<figure>
@@ -79,6 +108,12 @@
 				</figure>
 			</article>
 		</div>
+
+		<!-- Dynamic market list -->
+		<section class="market-list-section">
+			<h2>Latest Listings</h2>
+			<div id="marketList" class="market-list"></div>
+		</section>
 	</main>
 </body>
 </html>
