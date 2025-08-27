@@ -65,6 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
         <div class="listing-actions">
           <button class="like-btn" aria-label="Like">❤️ <span class="like-count">${listing.likes || 0}</span></button>
           <button class="buy-btn" ${listing.sold ? "disabled" : ""}>${listing.sold ? "Sold" : "Buy"}</button>
+          <button class="delete-btn" aria-label="Delete">Delete</button>
         </div>
       </div>
     `;
@@ -96,6 +97,23 @@ document.addEventListener("DOMContentLoaded", () => {
           card.classList.add("sold");
         } else {
           alert(data.message || "Failed to buy");
+        }
+      } catch (e) {
+        console.error(e);
+        alert("Network error");
+      }
+    });
+
+    const deleteBtn = card.querySelector(".delete-btn");
+    deleteBtn.addEventListener("click", async () => {
+      if (!confirm("Delete this listing?")) return;
+      try {
+        const res = await fetch(`${API_BASE}/listings/${listing.id}`, { method: "DELETE" });
+        const data = await res.json();
+        if (res.ok) {
+          card.remove();
+        } else {
+          alert(data.message || "Failed to delete");
         }
       } catch (e) {
         console.error(e);
