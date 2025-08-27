@@ -10,21 +10,25 @@
 <body>
 	<header>
 		<nav class="topnav">
-		  <img src="../images/homepage/logo.jpg" alt="Logo of the company">
-		  <a href="../index.html">Home</a>
-		  <a href="../tutorials/tutorials.html">Tutorials</a>
-		  <a class="active" href="market.html">Market</a>
-		  <a href="../materials/materials.html">Materials</a>
-		  <a href="../contact/contact.html">Contact</a>
-		  <button onclick="adjustFontSize(0.1)"> A+ </button>
-		  <button onclick="adjustFontSize(-0.1)"> A- </button>
-		  <select id="fontType" onchange="setFontType(this.value)">
-		  <option value="serif">Serif</option>
-		  <option value="sans-serif">Sans Serif</option>
-		  <option value="monospace">Monospace</option>
-		  <option value="Arial, sans-serif">Arial</option>
-		  <option value="'Times New Roman', serif">Times New Roman</option>
-		  </select>
+		  <div class="nav-left">
+			<img src="../images/homepage/logo.jpg" alt="Logo of the company">
+			<a href="../index.html">Home</a>
+			<a href="../tutorials/tutorials.html">Tutorials</a>
+			<a class="active" href="market.html">Market</a>
+			<a href="../materials/materials.html">Materials</a>
+			<a href="../contact/contact.html">Contact</a>
+		  </div>
+		  <div class="nav-right">
+			<button onclick="adjustFontSize(0.1)"> A+ </button>
+			<button onclick="adjustFontSize(-0.1)"> A- </button>
+			<select id="fontType" onchange="setFontType(this.value)">
+			<option value="serif">Serif</option>
+			<option value="sans-serif">Sans Serif</option>
+			<option value="monospace">Monospace</option>
+			<option value="Arial, sans-serif">Arial</option>
+			<option value="'Times New Roman', serif">Times New Roman</option>
+			</select>
+		  </div>
 		</nav>
 	</header>
 
