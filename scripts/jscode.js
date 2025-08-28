@@ -146,13 +146,19 @@ document.addEventListener("DOMContentLoaded", () => {
     listingForm.addEventListener("submit", async (e) => {
       e.preventDefault();
       const formData = new FormData(listingForm);
+      const titleVal = (formData.get("title") || "").toString().trim();
+      const descriptionVal = (formData.get("description") || "").toString().trim();
+      if (!titleVal) {
+        alert("Please enter a title.");
+        return;
+      }
       const payload = {
-        title: formData.get("title"),
+        title: titleVal,
         price: formData.get("price"),
-        description: formData.get("description"),
+        description: descriptionVal,
         contact: formData.get("contact"),
         imageUrl: formData.get("imageUrl"),
-        imageAlt: formData.get("imageAlt") || `Image of ${formData.get("title")} - ${formData.get("description")}`,
+        imageAlt: formData.get("imageAlt") || `Image of ${titleVal} - ${descriptionVal || "No description provided"}`,
       };
       try {
         const res = await fetch(`${API_BASE}/listings`, {
@@ -168,7 +174,6 @@ document.addEventListener("DOMContentLoaded", () => {
         listingForm.reset();
         await loadListings();
       } catch (e) {
-        console.error(e);
         alert("Network error");
       }
     });
@@ -231,7 +236,6 @@ document.addEventListener("DOMContentLoaded", () => {
   
   async function initializeDefaultListings() {
     if (hasInitialized) {
-      console.log("Already initialized, skipping");
       return;
     }
     
@@ -241,13 +245,11 @@ document.addEventListener("DOMContentLoaded", () => {
       
       // If there are ANY listings, do not add defaults
       if (Array.isArray(existingListings) && existingListings.length > 0) {
-        console.log("Listings already exist (", existingListings.length, "), skipping defaults");
         hasInitialized = true;
         return;
       }
       
       // Backend is empty: seed defaults
-      console.log(`No listings found. Seeding ${defaultListings.length} default listings.`);
       for (const listing of defaultListings) {
         try {
           const addRes = await fetch(`${API_BASE}/listings`, {
@@ -256,18 +258,15 @@ document.addEventListener("DOMContentLoaded", () => {
             body: JSON.stringify(listing),
           });
           if (!addRes.ok) {
-            console.error(`Failed to add listing ${listing.title}`);
-          } else {
-            console.log(`Seeded ${listing.title}`);
+            // continue on failure of an individual seed
           }
         } catch (addError) {
-          console.error(`Error adding listing ${listing.title}:`, addError);
+          // continue on error
         }
       }
-      console.log("Default listings seeded");
       hasInitialized = true;
     } catch (e) {
-      console.error("Failed to check existing listings:", e);
+      // fail silently
     }
   }
 
