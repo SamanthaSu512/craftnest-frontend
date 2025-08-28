@@ -1,4 +1,5 @@
 Author: Samantha Su
+Project video: 
 
 ---
 RUNNING THIS PROJECT
@@ -66,6 +67,7 @@ Troubleshooting:
 Accessibility notes:
 - All listing images expose descriptive labels to assistive technologies.
 - Forms use required validation for key fields (title, image URL, etc.).
+- If JavaScript is disabled, font controls and the market page’s dynamic features will not function.
 
 License/Notes:
 - Educational project for CS396 Web Dev. Update environment variables and backend service URLs as needed for your deployment.

@@ -408,6 +408,22 @@ label{
   }
 }
 
+/* Global focus-visible for accessibility */
+:focus-visible {
+  outline: 3px solid #382562;
+  outline-offset: 2px;
+}
+
+/* Noscript message styling */
+.noscript-warning {
+  margin: 12px 20px;
+  padding: 12px;
+  border-radius: 8px;
+  background: #fff3cd;
+  color: #5c4700;
+  border: 1px solid #ffe69c;
+}
+
 
 
 
