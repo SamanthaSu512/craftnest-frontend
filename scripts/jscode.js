@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const card = document.createElement("div");
     card.className = "listing-card" + (listing.sold ? " sold" : "");
 
-    const imgUrl = listing.imageUrl && listing.imageUrl.trim() !== "" ? listing.imageUrl : "../images/market/marketimage1.jpg";
+    const imgUrl = (listing.imageUrl || "").trim();
     // Use the imageAlt from the listing data, or fall back to title, or generic description
     const altText = listing.imageAlt || listing.title || "Handmade craft item";
 
