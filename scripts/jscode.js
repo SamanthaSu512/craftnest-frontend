@@ -171,7 +171,77 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // Default listings data
+  const defaultListings = [
+    {
+      id: "default-origami",
+      title: "Origami Cranes",
+      price: 15.00,
+      description: "Hand-folded paper cranes crafted with care, bringing elegance and tradition to your creative space.",
+      contact: "craftnest@example.com",
+      imageUrl: "../images/market/marketimage1.jpg",
+      likes: 0,
+      sold: false,
+      createdAt: new Date().toISOString()
+    },
+    {
+      id: "default-plushies", 
+      title: "Crochet Plushies",
+      price: 25.00,
+      description: "Soft, cuddly, and unique—these crochet plushies make perfect gifts or cozy companions.",
+      contact: "craftnest@example.com",
+      imageUrl: "../images/market/marketimage2.jpg",
+      likes: 0,
+      sold: false,
+      createdAt: new Date().toISOString()
+    },
+    {
+      id: "default-knitting",
+      title: "Knitted & Crochet Pieces",
+      price: 35.00,
+      description: "From scarves to home décor, these vibrant handmade pieces showcase artistry in every stitch.",
+      contact: "craftnest@example.com",
+      imageUrl: "../images/market/marketimage3.jpg",
+      likes: 0,
+      sold: false,
+      createdAt: new Date().toISOString()
+    },
+    {
+      id: "default-watercolor",
+      title: "Watercolor Artwork",
+      price: 45.00,
+      description: "Expressive and one-of-a-kind watercolor paintings, perfect for adding color and inspiration to your home.",
+      contact: "craftnest@example.com",
+      imageUrl: "../images/market/marketimage4.jpg",
+      likes: 0,
+      sold: false,
+      createdAt: new Date().toISOString()
+    }
+  ];
+
+  // Add default listings if none exist
+  async function initializeDefaultListings() {
+    try {
+      const res = await fetch(`${API_BASE}/listings`);
+      const existingListings = await res.json();
+      
+      if (existingListings.length === 0) {
+        // Add default listings one by one
+        for (const listing of defaultListings) {
+          await fetch(`${API_BASE}/listings`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(listing),
+          });
+        }
+        console.log("Default listings added");
+      }
+    } catch (e) {
+      console.error("Failed to add default listings:", e);
+    }
+  }
+
   // Load on page ready
-  loadListings();
+  initializeDefaultListings().then(() => loadListings());
 });
 
