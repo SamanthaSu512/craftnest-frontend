@@ -187,6 +187,13 @@ body {
   border-radius: 8px;
   font-size: 1rem;
 }
+/* Ensure placeholder text matches field font size and tone */
+.market-form input::placeholder,
+.market-form textarea::placeholder {
+  font-size: 1rem;
+  color: #777;
+  opacity: 1; /* Safari */
+}
 .market-form textarea {
   resize: vertical;
 }
