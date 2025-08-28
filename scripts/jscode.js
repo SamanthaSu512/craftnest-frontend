@@ -54,18 +54,19 @@ document.addEventListener("DOMContentLoaded", () => {
     card.className = "listing-card" + (listing.sold ? " sold" : "");
 
     const imgUrl = listing.imageUrl && listing.imageUrl.trim() !== "" ? listing.imageUrl : "../images/market/marketimage1.jpg";
+    const altText = listing.title || "Handmade craft item";
 
     card.innerHTML = `
-      <div class="listing-image" style="background-image:url('${imgUrl}')"></div>
+      <div class="listing-image" style="background-image:url('${imgUrl}')" role="img" aria-label="${altText}"></div>
       <div class="listing-body">
         <h3 class="listing-title">${listing.title}</h3>
         <p class="listing-price">$${Number(listing.price).toFixed(2)}</p>
         <p class="listing-description">${listing.description}</p>
         <p class="listing-contact">Contact: ${listing.contact}</p>
         <div class="listing-actions">
-          <button class="like-btn" aria-label="Like">❤️ <span class="like-count">${listing.likes || 0}</span></button>
-          <button class="buy-btn" ${listing.sold ? "disabled" : ""}>${listing.sold ? "Sold" : "Buy"}</button>
-          <button class="delete-btn" aria-label="Delete">Delete</button>
+          <button class="like-btn" aria-label="Like ${listing.title}">❤️ <span class="like-count">${listing.likes || 0}</span></button>
+          <button class="buy-btn" ${listing.sold ? "disabled" : ""} aria-label="${listing.sold ? 'Item sold' : 'Buy ' + listing.title}">${listing.sold ? "Sold" : "Buy"}</button>
+          <button class="delete-btn" aria-label="Delete ${listing.title}">Delete</button>
         </div>
       </div>
     `;
@@ -219,15 +220,22 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   ];
 
-  // Add default listings if none exist
+  // Add default listings if they don't exist
   async function initializeDefaultListings() {
     try {
       const res = await fetch(`${API_BASE}/listings`);
       const existingListings = await res.json();
       
-      if (existingListings.length === 0) {
-        // Add default listings one by one
-        for (const listing of defaultListings) {
+      // Check if default listings already exist by looking for their IDs
+      const defaultIds = defaultListings.map(l => l.id);
+      const existingDefaultIds = existingListings.filter(l => defaultIds.includes(l.id)).map(l => l.id);
+      
+      // Add any missing default listings
+      const missingDefaults = defaultListings.filter(l => !existingDefaultIds.includes(l.id));
+      
+      if (missingDefaults.length > 0) {
+        console.log(`Adding ${missingDefaults.length} missing default listings`);
+        for (const listing of missingDefaults) {
           await fetch(`${API_BASE}/listings`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -235,6 +243,8 @@ document.addEventListener("DOMContentLoaded", () => {
           });
         }
         console.log("Default listings added");
+      } else {
+        console.log("All default listings already exist");
       }
     } catch (e) {
       console.error("Failed to add default listings:", e);
