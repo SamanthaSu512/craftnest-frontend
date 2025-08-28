@@ -239,42 +239,32 @@ document.addEventListener("DOMContentLoaded", () => {
       const res = await fetch(`${API_BASE}/listings`);
       const existingListings = await res.json();
       
-      console.log("Existing listings:", existingListings.length);
-      console.log("Existing listing IDs:", existingListings.map(l => l.id));
-      
-      // Check if default listings already exist by looking for their IDs
-      const defaultIds = defaultListings.map(l => l.id);
-      const existingDefaultIds = existingListings.filter(l => defaultIds.includes(l.id)).map(l => l.id);
-      
-      console.log("Default IDs to check:", defaultIds);
-      console.log("Existing default IDs found:", existingDefaultIds);
-      
-      // Add any missing default listings
-      const missingDefaults = defaultListings.filter(l => !existingDefaultIds.includes(l.id));
-      
-      if (missingDefaults.length > 0) {
-        console.log(`Adding ${missingDefaults.length} missing default listings:`, missingDefaults.map(l => l.title));
-        for (const listing of missingDefaults) {
-          try {
-            const addRes = await fetch(`${API_BASE}/listings`, {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify(listing),
-            });
-            if (!addRes.ok) {
-              console.error(`Failed to add listing ${listing.title}`);
-            } else {
-              console.log(`Successfully added ${listing.title}`);
-            }
-          } catch (addError) {
-            console.error(`Error adding listing ${listing.title}:`, addError);
-          }
-        }
-        console.log("Default listings added");
-      } else {
-        console.log("All default listings already exist");
+      // If there are ANY listings, do not add defaults
+      if (Array.isArray(existingListings) && existingListings.length > 0) {
+        console.log("Listings already exist (", existingListings.length, "), skipping defaults");
+        hasInitialized = true;
+        return;
       }
       
+      // Backend is empty: seed defaults
+      console.log(`No listings found. Seeding ${defaultListings.length} default listings.`);
+      for (const listing of defaultListings) {
+        try {
+          const addRes = await fetch(`${API_BASE}/listings`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(listing),
+          });
+          if (!addRes.ok) {
+            console.error(`Failed to add listing ${listing.title}`);
+          } else {
+            console.log(`Seeded ${listing.title}`);
+          }
+        } catch (addError) {
+          console.error(`Error adding listing ${listing.title}:`, addError);
+        }
+      }
+      console.log("Default listings seeded");
       hasInitialized = true;
     } catch (e) {
       console.error("Failed to check existing listings:", e);
