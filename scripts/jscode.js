@@ -54,7 +54,8 @@ document.addEventListener("DOMContentLoaded", () => {
     card.className = "listing-card" + (listing.sold ? " sold" : "");
 
     const imgUrl = listing.imageUrl && listing.imageUrl.trim() !== "" ? listing.imageUrl : "../images/market/marketimage1.jpg";
-    const altText = listing.title || "Handmade craft item";
+    // Use the imageAlt from the listing data, or fall back to title, or generic description
+    const altText = listing.imageAlt || listing.title || "Handmade craft item";
 
     card.innerHTML = `
       <div class="listing-image" style="background-image:url('${imgUrl}')" role="img" aria-label="${altText}"></div>
@@ -151,6 +152,7 @@ document.addEventListener("DOMContentLoaded", () => {
         description: formData.get("description"),
         contact: formData.get("contact"),
         imageUrl: formData.get("imageUrl"),
+        imageAlt: formData.get("imageAlt") || `Image of ${formData.get("title")} - ${formData.get("description")}`,
       };
       try {
         const res = await fetch(`${API_BASE}/listings`, {
@@ -181,6 +183,7 @@ document.addEventListener("DOMContentLoaded", () => {
       description: "Hand-folded paper cranes crafted with care, bringing elegance and tradition to your creative space.",
       contact: "craftnest@example.com",
       imageUrl: "../images/market/marketimage1.jpg",
+      imageAlt: "Hand-folded origami paper cranes arranged in a decorative display",
       likes: 0,
       sold: false,
       createdAt: new Date().toISOString()
@@ -192,6 +195,7 @@ document.addEventListener("DOMContentLoaded", () => {
       description: "Soft, cuddly, and unique—these crochet plushies make perfect gifts or cozy companions.",
       contact: "craftnest@example.com",
       imageUrl: "../images/market/marketimage2.jpg",
+      imageAlt: "Colorful crochet plushie toys including animals and cute characters",
       likes: 0,
       sold: false,
       createdAt: new Date().toISOString()
@@ -203,6 +207,7 @@ document.addEventListener("DOMContentLoaded", () => {
       description: "From scarves to home décor, these vibrant handmade pieces showcase artistry in every stitch.",
       contact: "craftnest@example.com",
       imageUrl: "../images/market/marketimage3.jpg",
+      imageAlt: "Hand-knitted and crocheted items including scarves, blankets, and home decor",
       likes: 0,
       sold: false,
       createdAt: new Date().toISOString()
@@ -214,6 +219,7 @@ document.addEventListener("DOMContentLoaded", () => {
       description: "Expressive and one-of-a-kind watercolor paintings, perfect for adding color and inspiration to your home.",
       contact: "craftnest@example.com",
       imageUrl: "../images/market/marketimage4.jpg",
+      imageAlt: "Beautiful watercolor paintings with vibrant colors and artistic brushstrokes",
       likes: 0,
       sold: false,
       createdAt: new Date().toISOString()
