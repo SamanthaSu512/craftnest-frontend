@@ -43,9 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Market listings logic
 document.addEventListener("DOMContentLoaded", () => {
-  const API_BASE = (location.protocol === "file:" || location.hostname === "localhost" || location.hostname === "127.0.0.1")
-    ? "http://localhost:3001"
-    : "https://craftnest-backend-s6sm.onrender.com";
+  const API_BASE = 'https://craftnest-backend-s6sm.onrender.com';
   const listingForm = document.getElementById("listingForm");
   const marketList = document.getElementById("marketList");
 
