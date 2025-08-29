@@ -444,12 +444,6 @@ body {
   }
 }
 
-/* Global focus-visible for accessibility */
-:focus-visible {
-  outline: 3px solid #382562;
-  outline-offset: 2px;
-}
-
 /* Noscript message styling */
 .noscript-warning {
   margin: 12px 20px;
