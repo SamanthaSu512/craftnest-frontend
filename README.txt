@@ -1,5 +1,5 @@
 Author: Samantha Su
-Project video: 
+Project video: https://drive.google.com/file/d/1nDPc1oSSOvhDmqiKRrEXoRLCkUZ4-PkY/view?usp=sharing
 
 ---
 RUNNING THIS PROJECT
