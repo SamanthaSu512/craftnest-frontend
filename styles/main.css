@@ -355,7 +355,7 @@ body {
   flex-direction: column;
   gap: 1.5rem;
   padding: 0;
-  width: 100%; /* Changed from max-width: 500px */
+  width: 100%; 
 }
 
 .form-field {
@@ -366,7 +366,7 @@ body {
 
 .form-field label {
   font-weight: 600;
-  color: #333; /* Changed from #382562 */
+  color: #333; 
   font-size: 0.95rem;
   margin: 0;
 }
@@ -385,8 +385,8 @@ body {
 .form input:focus,
 .form textarea:focus {
   outline: none;
-  border-color: #666; /* Changed from #382562 */
-  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1); /* Changed from purple */
+  border-color: #666; 
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1); 
   background: white;
 }
 
@@ -398,7 +398,7 @@ body {
 .form button {
   padding: 14px 24px;
   border: none;
-  background: #333; /* Changed from purple gradient */
+  background: #333; 
   color: white;
   border-radius: 8px;
   cursor: pointer;
@@ -410,20 +410,12 @@ body {
 
 .form button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Changed from purple */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); 
 }
 
 .form button:active {
   transform: translateY(0);
 }
-
-.font-controls{
-  margin:20px;
-}
-label{
-  margin:20px;
-}
-
 
 /* MEDIA QUERIES */
 @media screen and (max-width: 820px) {
